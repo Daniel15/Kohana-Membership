@@ -44,7 +44,7 @@ class Controller_Member extends Controller_Template
 		$page->token = $this->get_token();
 		$page->member = $this->membership->get_member();
 		$page->login_box = new View('member/login_box');
-		$page->login_box->providers = Kohana::config('membership.providers');
+		$page->login_box->providers = Kohana::$config->load('membership.providers');
 	}
 	
 	/**
@@ -67,7 +67,7 @@ class Controller_Member extends Controller_Template
 		
 		$this->template->body = $page = new View('member/login');
 		$page->login_box = new View('member/login_box');
-		$page->login_box->providers = Kohana::config('membership.providers');
+		$page->login_box->providers = Kohana::$config->load('membership.providers');
 	}
 	
 	/**
