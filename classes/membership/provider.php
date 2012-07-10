@@ -59,7 +59,7 @@ abstract class Membership_Provider
 	public static function factory($provider_name)
 	{
 		// Load their provider 
-		$settings = Kohana::config('membership.providers.' . $provider_name);
+		$settings = Kohana::$config->load('membership.providers.' . $provider_name);
 		if ($settings == null)
 		{
 			throw new Exception('Invalid OpenID provider specified');
