@@ -76,7 +76,7 @@ class Controller_Member extends Controller_Template
 	 * Return - Called when we return from the provider's login page. Validate the login. Check if 
 	 * the user already has an account, and redirect to a registration page if not.
 	 */
-	public function action_return($provider)
+	public function action_return()
 	{
 		$provider_name = $provider = $this->request->param('id');
 		$provider = Membership_Provider::factory($provider);
