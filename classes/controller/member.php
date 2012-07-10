@@ -50,8 +50,10 @@ class Controller_Member extends Controller_Template
 	/**
 	 * Login. Shows a login widget. When a provider is clicked, redirect to that provider to log in
 	 */
-	public function action_login($provider_name = null)
+	public function action_login()
 	{
+		$provider_name = $this->request->param('id');
+		
 		// If a provider is posted, it overrides the URL
 		if (!empty($_POST['provider']))
 			$provider_name = $_POST['provider'];
@@ -74,9 +76,9 @@ class Controller_Member extends Controller_Template
 	 * Return - Called when we return from the provider's login page. Validate the login. Check if 
 	 * the user already has an account, and redirect to a registration page if not.
 	 */
-	public function action_return($provider)
+	public function action_return()
 	{
-		$provider_name = $provider;
+		$provider_name = $provider = $this->request->param('id');
 		$provider = Membership_Provider::factory($provider);
 		if (!($user = $provider->verifyLogin()))
 		{
